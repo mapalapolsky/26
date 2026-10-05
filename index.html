@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UKM MAPALA Politeknik Sekayu</title>
+<style>
+:root{
+  --primary:#0b3d2e;
+  --secondary:#1b6b4f;
+  --accent:#d8a72b;
+  --light:#f4f7f5;
+  --dark:#14201b;
+  --white:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--light);color:var(--dark);line-height:1.6}
+header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(11,61,46,.96);backdrop-filter:blur(8px);
+  box-shadow:0 4px 18px rgba(0,0,0,.15)
+}
+.navbar{max-width:1150px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+.brand{display:flex;align-items:center;gap:12px;color:white;text-decoration:none}
+.brand img{width:48px;height:48px;border-radius:50%;object-fit:cover;background:white}
+.brand strong{font-size:16px;letter-spacing:.5px}
+.brand span{display:block;font-size:11px;opacity:.8}
+nav{display:flex;gap:7px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;padding:9px 12px;border-radius:8px;font-size:14px}
+nav a:hover{background:rgba(255,255,255,.15)}
+.hero{
+  min-height:540px;display:flex;align-items:center;
+  background:linear-gradient(135deg,#0b3d2e 0%,#174f3b 55%,#092a20 100%);
+  color:white;position:relative;overflow:hidden
+}
+.hero:before{content:"";position:absolute;width:450px;height:450px;border:1px solid rgba(216,167,43,.25);border-radius:50%;right:-100px;top:-100px}
+.hero:after{content:"";position:absolute;width:300px;height:300px;border:1px solid rgba(255,255,255,.1);border-radius:50%;left:-120px;bottom:-120px}
+.hero-inner{max-width:1150px;width:100%;margin:auto;padding:70px 20px;display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:center;position:relative;z-index:2}
+.badge{display:inline-block;background:rgba(216,167,43,.16);border:1px solid rgba(216,167,43,.6);color:#f4d36b;padding:7px 13px;border-radius:30px;font-size:13px;margin-bottom:18px}
+.hero h1{font-size:clamp(36px,6vw,64px);line-height:1.05;margin-bottom:18px}
+.hero h1 span{color:#f0c84b}
+.hero p{font-size:17px;max-width:650px;color:#e7eee9;margin-bottom:26px}
+.btn{display:inline-block;background:var(--accent);color:#172016;text-decoration:none;font-weight:bold;padding:12px 19px;border-radius:9px;margin-right:8px}
+.btn.outline{background:transparent;color:white;border:1px solid rgba(255,255,255,.5)}
+.hero-logo{display:flex;justify-content:center}
+.hero-logo img{width:min(310px,80vw);aspect-ratio:1;object-fit:cover;border-radius:50%;background:white;padding:7px;box-shadow:0 18px 50px rgba(0,0,0,.3)}
+section{padding:75px 20px}
+.container{max-width:1150px;margin:auto}
+.section-title{text-align:center;margin-bottom:38px}
+.section-title h2{font-size:32px;color:var(--primary);margin-bottom:7px}
+.section-title p{color:#65726c}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.card{background:white;border-radius:16px;padding:26px;box-shadow:0 8px 25px rgba(14,39,29,.08);border:1px solid #e5ebe7}
+.card h3{color:var(--primary);margin-bottom:10px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:25px}
+.stat{background:#0b3d2e;color:white;padding:22px;border-radius:14px;text-align:center}
+.stat b{display:block;font-size:30px;color:#f0c84b}
+.members{background:#eaf0ed}
+.member-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.member{background:white;border-radius:14px;padding:20px;text-align:center;border:1px solid #dfe8e3}
+.avatar{width:82px;height:82px;border-radius:50%;margin:0 auto 12px;background:linear-gradient(135deg,#0b3d2e,#d8a72b);display:grid;place-items:center;color:white;font-size:25px;font-weight:bold}
+.member h3{font-size:17px;color:var(--primary)}
+.member p{font-size:13px;color:#68756e}
+.activities{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.activity{overflow:hidden;padding:0}
+.activity .top{height:145px;background:linear-gradient(135deg,#0b3d2e,#1b6b4f);display:grid;place-items:center;color:#f0c84b;font-size:42px}
+.activity .body{padding:20px}
+.activity small{color:#78857f}
+.reports{background:#fff}
+.report-table{width:100%;border-collapse:collapse;background:white;overflow:hidden;border-radius:12px}
+.report-table th,.report-table td{padding:14px;border-bottom:1px solid #e7ece9;text-align:left}
+.report-table th{background:var(--primary);color:white}
+.status{display:inline-block;padding:5px 9px;border-radius:20px;font-size:12px;background:#e3f2e9;color:#206b47}
+.contact{background:#0b3d2e;color:white}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.contact .card{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);color:white}
+.contact .card h3{color:#f0c84b}
+footer{background:#07271d;color:#cbd8d1;text-align:center;padding:25px 20px;font-size:13px}
+.menu-btn{display:none;background:none;border:0;color:white;font-size:25px}
+@media(max-width:850px){
+  .hero-inner,.about,.contact-grid{grid-template-columns:1fr}
+  .hero{text-align:center}.hero p{margin-left:auto;margin-right:auto}
+  .member-grid{grid-template-columns:repeat(2,1fr)}
+  .activities{grid-template-columns:1fr}
+  nav{display:none;position:absolute;top:72px;left:0;right:0;background:#0b3d2e;padding:12px 20px}
+  nav.open{display:flex;flex-direction:column}
+  .menu-btn{display:block}
+}
+@media(max-width:520px){
+  .member-grid,.stats{grid-template-columns:1fr}
+  section{padding:55px 15px}
+  .navbar{padding:10px 15px}
+  .brand strong{font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <a class="brand" href="#beranda">
+      <img src="logo-mapala.jpeg" alt="Logo MAPALA Politeknik Sekayu">
+      <div><strong>UKM MAPALA</strong><span>Politeknik Sekayu</span></div>
+    </a>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <nav id="nav">
+      <a href="#beranda">Beranda</a>
+      <a href="#tentang">Tentang</a>
+      <a href="#anggota">Anggota</a>
+      <a href="#kegiatan">Kegiatan</a>
+      <a href="#laporan">Laporan</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="beranda">
+  <div class="hero-inner">
+    <div>
+      <div class="badge">UNIT KEGIATAN MAHASISWA</div>
+      <h1>MAPALA <span>Politeknik Sekayu</span></h1>
+      <p>Wadah mahasiswa untuk mengembangkan kecintaan terhadap alam, kepemimpinan, solidaritas, keterampilan lapangan, serta kepedulian terhadap lingkungan.</p>
+      <a class="btn" href="#anggota">Lihat Anggota</a>
+      <a class="btn outline" href="#laporan">Lihat Laporan</a>
+    </div>
+    <div class="hero-logo"><img src="logo-mapala.jpeg" alt="Logo MAPALA"></div>
+  </div>
+</section>
+
+<section id="tentang">
+  <div class="container">
+    <div class="section-title">
+      <h2>Tentang UKM MAPALA</h2>
+      <p>Profil singkat organisasi</p>
+    </div>
+    <div class="about">
+      <div class="card">
+        <h3>MAPALA Politeknik Sekayu</h3>
+        <p>UKM MAPALA Politeknik Sekayu merupakan organisasi mahasiswa yang menjadi ruang belajar, berkegiatan, dan berkontribusi dalam bidang kepecintaalaman serta lingkungan.</p>
+        <p style="margin-top:12px">Website ini dapat digunakan sebagai pusat informasi anggota, dokumentasi kegiatan, dan laporan kegiatan UKM MAPALA.</p>
+      </div>
+      <div class="card">
+        <h3>Identitas Kampus</h3>
+        <div style="display:flex;align-items:center;gap:20px">
+          <img src="logo-poltek.jfif" alt="Logo Politeknik Sekayu" style="width:110px;height:110px;object-fit:contain">
+          <div><b>Politeknik Sekayu</b><br>Musi Banyuasin, Sumatera Selatan<br><small>UKM MAPALA</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>MAPALA</b><span>Unit Kegiatan Mahasiswa</span></div>
+      <div class="stat"><b>2026</b><span>Periode Website</span></div>
+      <div class="stat"><b>SEKAYU</b><span>Musi Banyuasin</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="members" id="anggota">
+  <div class="container">
+    <div class="section-title">
+      <h2>Anggota MAPALA</h2>
+      <p>Daftar anggota dapat diubah sesuai data kepengurusan</p>
+    </div>
+    <div class="member-grid">
+      <div class="member"><img src="PEBRI.jpeg" alt="" style="width:110px;height:110px;object-fit:contain"><h3>PEBRIANDI</h3><p>Ketua Umum</p></div>
+      <div class="member"><img src="AYU.jpeg" alt="" style="width:110px;height:110px;object-fit:contain"><h3>AYU LESTARI</h3><p>Sekretaris</p></div>
+      <div class="member"><img src="MEY.jpeg" alt="" style="width:110px;height:110px;object-fit:contain"><h3>MEYLANI JUWITA SARI</h3><p>Bendahara</p></div>
+      <div class="member"><img src="META.jpeg" alt="" style="width:110px;height:110px;object-fit:contain"><h3>META</h3><p>Divisi Lapangan</p></div>
+      <div class="member"><img src="MASAYU.jpeg" alt="" style="width:110px;height:110px;object-fit:contain"><h3>MASAYU</h3><p>Divisi Humas</p></div>
+      <div class="member"><img src="ALIA.jpeg" alt="" style="width:110px;height:110px;object-fit:contain"><h3>ALYA</h3><p>Divisi Perlengkapan</p></div>
+      <div class="member"><img src="WhatsApp Image 2026-10-06 at 00.20.03.jpeg" alt="" style="width:110px;height:110px;object-fit:contain"><h3>LITA</h3><p>Divisi Dokumentasi</p></div>
+      <div class="member"><img src="ADES.jpeg" alt="" style="width:110px;height:110px;object-fit:contain"><h3>ADES</h3><p>Divisi Acara</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="kegiatan">
+  <div class="container">
+    <div class="section-title">
+      <h2>Kegiatan MAPALA</h2>
+      <p>Dokumentasi dan agenda organisasi</p>
+    </div>
+    <div class="activities">
+      <div class="card activity"><div class="top">🏕️</div><div class="body"><h3>Diklat & Diksar</h3><small>Pelatihan dasar kepecintaalaman</small><p style="margin-top:8px">Tambahkan dokumentasi, tanggal, lokasi, dan uraian kegiatan di bagian ini.</p></div></div>
+      <div class="card activity"><div class="top">🌿</div><div class="body"><h3>Aksi Lingkungan</h3><small>Peduli alam dan lingkungan</small><p style="margin-top:8px">Tambahkan dokumentasi kegiatan sosial dan lingkungan MAPALA.</p></div></div>
+      <div class="card activity"><div class="top">⛰️</div><div class="body"><h3>Kegiatan Lapangan</h3><small>Eksplorasi & pengembangan skill</small><p style="margin-top:8px">Tambahkan catatan perjalanan, pelatihan, dan kegiatan lapangan.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="reports" id="laporan">
+  <div class="container">
+    <div class="section-title">
+      <h2>Laporan Kegiatan</h2>
+      <p>Rekap laporan kegiatan UKM MAPALA Politeknik Sekayu</p>
+    </div>
+    <div class="card" style="overflow:auto">
+      <table class="report-table">
+        <thead><tr><th>No</th><th>Kegiatan</th><th>Tanggal</th><th>Lokasi</th><th>Status</th><th>Keterangan</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Diklat Dasar</td><td>Isi tanggal</td><td>Isi lokasi</td><td><span class="status">belum</span></td><td>Laporan belum </td></tr>
+          <tr><td>2</td><td>Aksi Lingkungan</td><td>Isi tanggal</td><td>Isi lokasi</td><td><span class="status">belum</span></td><td>Laporan belum</td></tr>
+          <tr><td>3</td><td>Kegiatan Lapangan</td><td>Isi tanggal</td><td>Isi lokasi</td><td><span class="status">belum</span></td><td>Laporan belum</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="kontak">
+  <div class="container">
+    <div class="section-title">
+      <h2 style="color:white">Kontak Organisasi</h2>
+      <p style="color:#cbd8d1">Informasi yang dapat diisi sesuai akun resmi MAPALA</p>
+    </div>
+    <div class="contact-grid">
+      <div class="card"><h3>UKM MAPALA Politeknik Sekayu</h3><p style="margin-top:10px">📍 Politeknik Sekayu, Musi Banyuasin, Sumatera Selatan</p><p>📧 Email: mapalapolsky9@gmail.com</p><p>📱 WhatsApp: 08989941909</p></div>
+      <div class="card"><h3>Media Sosial</h3><p style="margin-top:10px">Instagram: @mapala.polsky</p><p>Facebook: MAPALA Politeknik Sekayu</p><p>TikTok: @mapala.polsky</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  © 2026 UKM MAPALA Politeknik Sekayu · Website Organisasi Mahasiswa
+</footer>
+
+<script>
+function toggleMenu(){document.getElementById('nav').classList.toggle('open')}
+document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nav').classList.remove('open')));
+</script>
+</body>
+</html>
